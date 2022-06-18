@@ -1,9 +1,8 @@
 import { AutoMap } from "@automapper/classes";
-import { uuid } from "uuidv4";
+import { EntityBase } from "../../../shared/modelBase/entityBase";
 
-export class User {
-    @AutoMap()
-    public readonly id: string;
+export class User extends EntityBase {
+
     @AutoMap()
     public name: string;
     @AutoMap()
@@ -12,7 +11,7 @@ export class User {
     public password: string;
 
     constructor(props: Omit<User, 'id'>, id?: string) {
+        super(id)
         Object.assign(this, props);
-        this.id = id || uuid();
     }
 }
