@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger Documentation",
+        "description": "This is an API REST",
+        "version": "1.0.0",
+        "contact": {
+            "email": "lucianopedesol@hotmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create a Users",
+                "description": "Create a new User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Nome",
+                                    "email": "email@teste.com",
+                                    "password": "9E825FCD14408D09C"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "User already Exists."
+                    }
+                }
+            }
+        }
+    }
+}

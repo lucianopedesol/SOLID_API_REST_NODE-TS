@@ -1,13 +1,16 @@
 import { User } from "../../entities/User";
-import { IMailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { IMailProvider } from "../../../../providers/IMailProvider";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
+import { inject, injectable } from 'tsyringe'
+
+@injectable()
 export class CreateUserUserCase {
 
     constructor(
-        private usersRepository: IUsersRepository,
-        private mailProvider: IMailProvider,
+        @inject("UserRepository") private usersRepository: IUsersRepository,
+        @inject("MailTrapMailProviders") private mailProvider: IMailProvider,
     ) { }
 
     async execute(data: ICreateUserRequestDTO) {
