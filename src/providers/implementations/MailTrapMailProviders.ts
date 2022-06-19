@@ -1,18 +1,20 @@
-import { IMailProvider, IMessage } from "../IMailProvider";
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
+import { env } from "process";
+
+import { IMailProvider, IMessage } from "../IMailProvider";
 
 export class MailTrapMailProviders implements IMailProvider {
     private transporter: Mail;
 
     constructor() {
         this.transporter = nodemailer.createTransport({
-            host: "Host",
-            port: 0,
+            host: env.MAIL_HOST,
+            port: Number(env.MAIL_PORT),
             auth: {
-                user: "<User>",
-                pass: "<Pass>"
-            }
+                user: env.MAIL_AUTH_USER,
+                pass: env.MAIL_AUTH_PASS,
+            },
         });
     }
 
@@ -20,15 +22,14 @@ export class MailTrapMailProviders implements IMailProvider {
         await this.transporter.sendMail({
             to: {
                 name: message.to.name,
-                address: message.to.email
+                address: message.to.email,
             },
             from: {
                 name: message.to.name,
-                address: message.to.email
+                address: message.to.email,
             },
             subject: message.subject,
-            html: message.body
-        })
+            html: message.body,
+        });
     }
-
 }
