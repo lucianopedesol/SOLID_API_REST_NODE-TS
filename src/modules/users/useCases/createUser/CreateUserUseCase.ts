@@ -33,7 +33,7 @@ export class CreateUserUserCase {
                 email: data.email,
             },
             from: {
-                name: "Your companysss name",
+                name: "Your company name",
                 email: "yourcompanyname@email.com",
             },
             subject: "Welcome",
