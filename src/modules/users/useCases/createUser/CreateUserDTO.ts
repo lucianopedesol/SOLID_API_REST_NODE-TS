@@ -1,4 +1,5 @@
 import { AutoMap } from "@automapper/classes";
+
 import { DTOBase } from "../../../../shared/modelBase/dtoBase";
 
 export class CreateUserRequestDTO extends DTOBase {

@@ -1,9 +1,8 @@
+import { Router } from "express";
 
+import { userRoutes } from "./UserRoutes";
 
-import { Router } from 'express';
-import { userRoutes } from './UserRoutes';
-
-const routes = Router()
+const routes = Router();
 
 routes.use(userRoutes);
 

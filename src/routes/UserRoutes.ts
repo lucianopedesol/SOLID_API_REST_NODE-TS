@@ -1,13 +1,14 @@
-import { Router } from "express"
-import { CreateUserControler } from "../modules/users/useCases/createUser/CreateUserControler"
-import { ListUserControler } from "../modules/users/useCases/listUsers/ListUserControler"
+import { Router } from "express";
 
-const userRoutes = Router()
-const createUserControler = new CreateUserControler()
-const listUserControler = new ListUserControler()
+import { CreateUserControler } from "../modules/users/useCases/createUser/CreateUserControler";
+import { ListUserControler } from "../modules/users/useCases/listUsers/ListUserControler";
 
-userRoutes.post('/users', createUserControler.handle)
-userRoutes.get('/users/getAll', listUserControler.getAll)
-userRoutes.get('/users/findById/:id', listUserControler.findById)
+const userRoutes = Router();
+const createUserControler = new CreateUserControler();
+const listUserControler = new ListUserControler();
 
-export { userRoutes }
+userRoutes.post("/users", createUserControler.handle);
+userRoutes.get("/users/getAll", listUserControler.getAll);
+userRoutes.get("/users/findById/:id", listUserControler.findById);
+
+export { userRoutes };

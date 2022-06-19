@@ -1,8 +1,8 @@
 import { AutoMap } from "@automapper/classes";
+
 import { EntityBase } from "../../../shared/modelBase/entityBase";
 
 export class User extends EntityBase {
-
     @AutoMap()
     public name: string;
     @AutoMap()
@@ -10,8 +10,8 @@ export class User extends EntityBase {
     @AutoMap()
     public password: string;
 
-    constructor(props: Omit<User, 'id'>, id?: string) {
-        super(id)
+    constructor(props: Omit<User, "id">, id?: string) {
+        super(id);
         Object.assign(this, props);
     }
 }
