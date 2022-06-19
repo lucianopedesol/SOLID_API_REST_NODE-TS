@@ -9,6 +9,7 @@ export class User extends EntityBase {
     public email: string;
     @AutoMap()
     public password: string;
+    public created_at: string;
 
     constructor(props: Omit<User, "id">, id?: string) {
         super(id);
