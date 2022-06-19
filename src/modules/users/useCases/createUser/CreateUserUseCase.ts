@@ -11,7 +11,7 @@ export class CreateUserUserCase {
         @inject("UserRepository") private usersRepository: IUsersRepository,
         @inject("MailTrapMailProviders") private mailProvider: IMailProvider
     ) {
-        /** */
+        /**   */
     }
 
     async execute(data: CreateUserRequestDTO) {
