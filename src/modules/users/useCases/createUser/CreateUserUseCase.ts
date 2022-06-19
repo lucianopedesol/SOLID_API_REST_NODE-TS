@@ -1,9 +1,9 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { IMailProvider } from "../../../../providers/IMailProvider";
-import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
 import { inject, injectable } from 'tsyringe'
+import { CreateUserRequestDTO } from "./CreateUserDTO";
 
 @injectable()
 export class CreateUserUserCase {
@@ -13,7 +13,7 @@ export class CreateUserUserCase {
         @inject("MailTrapMailProviders") private mailProvider: IMailProvider,
     ) { }
 
-    async execute(data: ICreateUserRequestDTO) {
+    async execute(data: CreateUserRequestDTO) {
         const userAlreadyExists = await this.usersRepository.findByEmail(data.email);
 
         if (userAlreadyExists) {

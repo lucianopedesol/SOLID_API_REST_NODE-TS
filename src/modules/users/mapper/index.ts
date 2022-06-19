@@ -1,4 +1,4 @@
-import { createMap, forMember, mapFrom, MappingProfile, ArrayKeyedMap } from "@automapper/core";
+import { createMap, forMember, mapFrom, MappingProfile } from "@automapper/core";
 import { User } from "../entities/User";
 import { ListUserDTO } from "../useCases/listUsers/ListUserDTO";
 
