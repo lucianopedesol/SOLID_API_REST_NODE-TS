@@ -10,7 +10,7 @@ export class User extends EntityBase {
     @AutoMap()
     public password: string;
 
-    public created_at?: string;
+    public created_at?: Date;
 
     constructor(props: Omit<User, "id">, id?: string) {
         super(id);

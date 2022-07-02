@@ -1,19 +1,40 @@
+import { PrismaClient } from "@prisma/client";
+
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../IUsersRepository";
 
-export class UserRepository implements IUsersRepository {
-    private users: User[] = [];
+const prisma = new PrismaClient();
 
+export class UserRepository implements IUsersRepository {
     async getAll(): Promise<User[]> {
-        return this.users;
+        return prisma.user.findMany();
     }
+
     async findById(id: string): Promise<User> {
-        return this.users.find((user) => user.id === id);
+        return prisma.user.findFirst({
+            where: {
+                id,
+            },
+        });
     }
+
     async findByEmail(email: string): Promise<User> {
-        return this.users.find((user) => user.email === email);
+        return prisma.user.findFirst({
+            where: {
+                email,
+            },
+        });
     }
+
     async save(user: User): Promise<void> {
-        this.users.push(user);
+        await prisma.user.create({
+            data: {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                password: user.password,
+                created_at: new Date(),
+            },
+        });
     }
 }
